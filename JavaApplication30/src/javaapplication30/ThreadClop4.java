@@ -20,12 +20,13 @@ public class ThreadClop4 extends Thread {
     private boolean faiYield = true;
     private boolean faiSleep = false;
     private DatiCondivisi dC;
-    Csemafori mutex;
+    Csemafori mutex, ths4;
     int i = 0;
     
     public ThreadClop4(DatiCondivisi dati){
         dC = dati;
-        mutex = dC.getMutex();
+        mutex = dC.getMutex(); 
+        this.ths4 = dC.getThs4();
     }
 
     public void run() {
@@ -54,7 +55,7 @@ public class ThreadClop4 extends Thread {
                     Thread.sleep(100);
 
                 }
-                
+                ths4.Signal();
             }
         } catch (InterruptedException ex) {}
     }

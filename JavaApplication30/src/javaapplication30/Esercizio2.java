@@ -31,7 +31,13 @@ public class Esercizio2 {
             
             
             Csemafori mutex = new Csemafori(1);
-            DatiCondivisi dC = new DatiCondivisi(0, 0, 0, 0, 0, mutex);
+            Csemafori ths1 = new Csemafori(0);
+            Csemafori ths2 = new Csemafori(0);
+            Csemafori ths3 = new Csemafori(0);
+            Csemafori ths4 = new Csemafori(0);
+            Csemafori ths5 = new Csemafori(0);
+            
+            DatiCondivisi dC = new DatiCondivisi(0, 0, 0, 0, 0, mutex, ths1, ths2, ths3, ths4, ths5);
             
             
             int[] classificaPassi = new int[5];
@@ -50,11 +56,11 @@ public class Esercizio2 {
             tc4.start();
             tc5.start();
             
-            tc1.join();
-            tc2.join();
-            tc3.join();
-            tc4.join();
-            tc5.join();
+            ths1.wait();
+            ths2.wait();
+            ths3.wait();
+            ths4.wait();
+            ths5.wait();
             
             int p1 = dC.getNumPassi1();
             int p2 = dC.getNumPassi2();
